@@ -1,0 +1,1197 @@
+@font-face {
+    font-family: 'MontHeavy';
+    src: url('fonts/MontHeavy.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MontLight';
+    src: url('fonts/MontLight.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #101010;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: Arial, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+}
+
+/* Runder Button unten */
+/* Scroll-Button-Container */
+.scroll-container {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* Neuer runder Button */
+.scroll-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Icon im Button */
+.arrow-icon {
+    width: 18px;
+    height: 14px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+/* Hover-Effekt für das Icon */
+.scroll-button:hover .arrow-icon {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+
+.scroll-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Jede Sektion ist ein Fullscreen-Panel */
+.section {
+    width: 100%;
+    height: 100vh;
+    background: #10101000; /* Etwas heller als der Hauptbackground */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+
+/* Container für Inhalte mittig ausrichten */
+.content {
+    text-align: center;
+    max-width: 80%;
+}
+
+/* Logo Styling */
+.logo {
+    width: 120px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 0px;
+}
+
+/* Header Styling */
+.header {
+    font-size: 4rem;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-family: "MontHeavy";
+}
+
+/* Text Styling */
+.description {
+    font-size: 1.7rem;
+    opacity: 0.8; /* Leichter Transparenzeffekt */
+    max-width: 600px; /* Begrenzt die Breite */
+    margin: 0 auto; /* Zentriert den Text */
+    font-family: "MontLight";
+}
+
+.blob-outer-container{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    inset: 0;
+    margin: auto;
+    filter: blur(100px);
+}
+.blob-inner-container{
+    border-radius: 99999px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(0.7);
+    transition: background 1s ease-in-out;
+}
+.blob{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    inset: 0;
+    margin: auto;
+    opacity: 0.1;
+    background: conic-gradient(from 0deg, 
+    rgb(0, 225, 255),
+     rgb(0, 110, 255), 
+     rgba(0, 195, 255, 0.8),
+    rgb(0, 153, 255), #00f7ff );
+    animation: spinBlob 8s linear infinite;
+    transition: background 2s ease-in-out, opacity 1.5s ease-in-out; 
+}
+.blob-overlay {
+    position: absolute;
+    width: 100%;
+    max-width: 100vw;
+    height: 100vh;
+    inset: 0;
+    margin: auto;
+    opacity: 0; /* Startet unsichtbar */
+    background: conic-gradient(from 0deg, 
+        rgb(0, 195, 255), 
+        rgb(255, 251, 0), 
+        rgba(255, 153, 0, 0.8), 
+        rgb(0, 238, 255),
+        rgb(255, 251, 0)
+    );
+    transition: opacity 2s ease-in-out;
+}
+
+@keyframes spinBlob{
+    0%{
+        transform: rotate(0deg) scale(2);
+    }
+    100%{
+        transform: rotate(1turn) scale(2);
+    }
+}
+
+/* Für WebKit-Browser (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px; /* Breite der Scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #101010; /* Hintergrund der Scroll-Leiste */
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #fff, #006eff, #0099ff); /* Farbverlauf für den Thumb */
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #fff, #0084ff); /* Hellerer Effekt beim Hover */
+}
+
+/* Optional: Scrollbar für Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #fff #101010;
+}
+
+/* Container für die Game Status Box */
+.game-status-box {
+    width: 100%;
+    justify-self: center;
+    margin-top: 80px;
+    border-radius: 12px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Überschrift "Games" */
+.games-title {
+    font-size: 1.7rem;
+    font-family: "MontHeavy";
+    margin-bottom: 0px;
+    color: white;
+}
+
+/* Flexbox für die Status-Elemente */
+.game-status-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Einzelne Status-Spalten */
+.status-item {
+    flex: 1;
+    text-align: center;
+}
+
+/* Status-Titel */
+.status-item h3 {
+    font-size: 1.1rem;
+    font-family: "MontLight";
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Zahlen (z. B. 0) */
+.status-number {
+    font-size: 2rem;
+    font-family: "MontHeavy";
+    color: white;
+    margin-top: 5px;
+}
+
+/* Divider (Trennlinie zwischen den beiden Status) */
+.divider {
+    width: 2px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1px;
+}
+
+.content2{
+    text-align: center;
+    max-width: 80%;
+}
+
+.cards {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    grid-template-rows: repeat(1, auto); /* 2 Reihen */
+	justify-content: center;
+	align-items: center;
+    gap: 1rem 1rem;
+	width: 100%;
+	&:hover {
+		.card {
+			background: radial-gradient(
+				100rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.4),
+				transparent 15%
+			);
+		}
+	}
+	.card {
+		width: 25rem;
+		height: 20rem;
+		background: radial-gradient(
+			150rem circle at 0 0,
+			rgba(#00f7ff, 0),
+			transparent 0%
+		);
+		border-radius: 0.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		transition: all 0.15s;
+		&:hover {
+			transform: scale(0.97);
+			&::before {
+				opacity: 1;
+			}
+		}
+		&::before {
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 12px;
+			background: radial-gradient(
+				60rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.1),
+				transparent 35%
+			);
+			opacity: 0;
+			transition: all 0.15s ease-in-out;
+		}
+		.card-content {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.08);
+			border-radius: 12px;
+			transition: all 0.25s;
+			height: calc(100% - 0.1rem);
+			width: calc(100% - 0.1rem);
+
+            display: flex;
+            align-items: center; /* Zentriert vertikal */
+            justify-content: center; /* Zentriert horizontal */
+            flex-direction: column; /* Stapelt Inhalt vertikal */
+            text-align: center; /* Falls Text vorhanden ist */
+		}
+	}
+}
+
+.games-title2 {
+    font-size: 2.7rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: "MontHeavy";
+}
+
+.description2 {
+    font-size: 1.1rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    font-family: "MontLight";
+    margin-bottom: 50px;
+}
+
+.games-title3 {
+    font-size: 1.7rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: "MontHeavy";
+}
+
+.description3 {
+    font-size: 1.2rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "MontLight";
+}
+
+.logo2 {
+    width: 100px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.logo3 {
+    width: 100px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.logo7 {
+    width: 100px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.games-title4 {
+    font-size: 1.7rem;
+    margin-bottom: 0px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: "MontHeavy";
+}
+
+.description4 {
+    font-size: 1.2rem;
+    opacity: 0.7; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 20px;
+    font-family: "MontLight";
+}
+
+.description8 {
+    font-size: 1.2rem;
+    opacity: 0.7; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 40px;
+    font-family: "MontLight";
+}
+
+
+.description5 {
+    font-size: 1.2rem;
+    opacity: 1; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 20px;
+    font-family: "MontLight";
+}
+
+.content3{
+    text-align: center;
+    max-width: 80%;
+}
+
+.footer {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
+    font-family: "MontLight";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0; /* Unsichtbar standardmäßig */
+    transform: translateY(100%); /* Außerhalb des Bildschirms */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.logo4 {
+    width: 30px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+/* Standardmäßig versteckt */
+.content, .content2, .content3 {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Wenn sichtbar, dann erscheinen */
+.content.visible, .content2.visible, .content3.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 70;
+    right: 70px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999; /* Über alles */
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Hover Effekt */
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Icon im Button */
+.theme-toggle img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Snackbar */
+.snackbar {
+    position: fixed;
+    top: 100px;
+    right: 70px; /* Startet außerhalb des Bildschirms */
+    width: 180px;
+    height: 60px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, right 0.4s ease-out;
+}
+
+.snackbar::after {
+    content: "";
+    position: absolute;
+    top: -10px; /* Position der Zacke */
+    right: 15px; /* Abstand zur rechten Ecke */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Zeigt die Snackbar mit sanftem Slide-In & Fade-In */
+.snackbar.show {
+    visibility: visible;
+    opacity: 1;
+    top: 140px;
+}
+
+/* Slide-Out & Fade-Out Effekt */
+.snackbar:not(.show) {
+    top: 100px;
+    opacity: 0;
+}
+
+.logo5 {
+    width: 400px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.logo5::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+    transform: skewX(-25deg);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+.cards2 {
+	display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Spalten */
+    grid-template-rows: repeat(1, auto); /* 2 Reihen */
+	justify-content: center;
+	align-items: center;
+    margin-top: 50px;
+    gap: 1rem 1rem;
+	width: 100%;
+	&:hover {
+		.card {
+			background: radial-gradient(
+				100rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.4),
+				transparent 15%
+			);
+		}
+	}
+
+.card2 {
+    width: 20rem;
+    height: 15rem;
+    background: radial-gradient(
+        150rem circle at 0 0,
+        rgba(#00f7ff, 0),
+        transparent 0%
+    );
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.15s;
+    &:hover {
+        transform: scale(0.97);
+        &::before {
+            opacity: 1;
+        }
+    }
+    &::before {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 12px;
+        background: radial-gradient(
+            60rem circle at var(--xPos) var(--yPos),
+            rgba(#00f7ff, 0.1),
+            transparent 35%
+        );
+        opacity: 0;
+        transition: all 0.15s ease-in-out;
+    }
+    .card-content2 {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        transition: all 0.25s;
+        height: calc(100% - 0.1rem);
+        width: calc(100% - 0.1rem);
+
+        display: flex;
+        align-items: center; /* Zentriert vertikal */
+        justify-content: center; /* Zentriert horizontal */
+        flex-direction: column; /* Stapelt Inhalt vertikal */
+        text-align: center; /* Falls Text vorhanden ist */
+    }
+}
+}
+
+.games-title6 {
+    font-size: 1.7rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: "MontHeavy";
+}
+
+.description6 {
+    font-size: 1rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "MontLight";
+}
+
+.description7 {
+    font-size: 0.9rem;
+    opacity: 1; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-family: "MontLight";
+}
+
+@media screen and (max-width: 700px) {
+    .theme-toggle {
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999; /* Über alles */
+    transition: background 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Hover Effekt */
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Icon im Button */
+.theme-toggle img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Logo Styling */
+.logo {
+    width: 80px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 0px;
+}
+
+/* Header Styling */
+.header {
+    font-size: 3rem;
+    margin-top: 16px;
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-family: "MontHeavy";
+}
+
+/* Text Styling */
+.description {
+    font-size: 1.2rem;
+    opacity: 0.8; /* Leichter Transparenzeffekt */
+    max-width: 600px; /* Begrenzt die Breite */
+    margin: 0 auto; /* Zentriert den Text */
+    font-family: "MontLight";
+}
+/* Container für die Game Status Box */
+.game-status-box {
+    width: 100%;
+    justify-self: center;
+    margin-top: 80px;
+    border-radius: 12px;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Überschrift "Games" */
+.games-title {
+    font-size: 1.2rem;
+    font-family: "MontHeavy";
+    margin-bottom: 0px;
+    color: white;
+}
+
+/* Flexbox für die Status-Elemente */
+.game-status-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+/* Einzelne Status-Spalten */
+.status-item {
+    flex: 1;
+    text-align: center;
+}
+
+/* Status-Titel */
+.status-item h3 {
+    font-size: 0.9rem;
+    font-family: "MontLight";
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Zahlen (z. B. 0) */
+.status-number {
+    font-size: 2rem;
+    font-family: "MontHeavy";
+    color: white;
+    margin-top: 5px;
+}
+
+/* Divider (Trennlinie zwischen den beiden Status) */
+.divider {
+    width: 2px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 1px;
+}
+
+/* Snackbar */
+.snackbar {
+    position: fixed;
+    top: 110px !important;
+    right: 40px !important; /* Startet außerhalb des Bildschirms */
+    width: 160px;
+    height: 50px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 9999;
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, right 0.4s ease-out;
+}
+
+.snackbar::after {
+    content: "";
+    position: absolute;
+    top: -10px; /* Position der Zacke */
+    right: 15px; /* Abstand zur rechten Ecke */
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Zeigt die Snackbar mit sanftem Slide-In & Fade-In */
+.snackbar.show {
+    visibility: visible;
+    opacity: 1;
+    top: 140px;
+}
+
+/* Slide-Out & Fade-Out Effekt */
+.snackbar:not(.show) {
+    top: 100px;
+    opacity: 0;
+}
+
+.logo5 {
+    width: 250px;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.logo5::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+    transform: skewX(-25deg);
+    animation: shine 2s infinite;
+}
+
+.cards2 {
+    display: flex;
+    flex-direction: column; /* Karten untereinander */
+    align-items: center; /* Zentriert die Inhalte */
+    margin-top: 20px;
+    gap: 1rem;
+	&:hover {
+		.card {
+			background: radial-gradient(
+				100rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.4),
+				transparent 15%
+			);
+		}
+	}
+
+.card2 {
+    width: 20rem;
+    height: 8rem;
+    background: radial-gradient(
+        150rem circle at 0 0,
+        rgba(#00f7ff, 0),
+        transparent 0%
+    );
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.15s;
+    &:hover {
+        transform: scale(0.97);
+        &::before {
+            opacity: 1;
+        }
+    }
+    &::before {
+        content: "";
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 12px;
+        background: radial-gradient(
+            60rem circle at var(--xPos) var(--yPos),
+            rgba(#00f7ff, 0.1),
+            transparent 35%
+        );
+        opacity: 0;
+        transition: all 0.15s ease-in-out;
+    }
+    .card-content2 {
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        transition: all 0.25s;
+        height: calc(100% - 0.1rem);
+        width: calc(100% - 0.1rem);
+
+        display: flex;
+        align-items: center; /* Zentriert vertikal */
+        justify-content: center; /* Zentriert horizontal */
+        flex-direction: column; /* Stapelt Inhalt vertikal */
+        text-align: center; /* Falls Text vorhanden ist */
+    }
+}
+}
+
+.games-title6 {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 0px;
+    font-family: "MontHeavy";
+}
+
+.description6 {
+    font-size: 0.8rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "MontLight";
+}
+
+.description4 {
+    font-size: 1rem;
+    opacity: 0.7; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 10px;
+    font-family: "MontLight";
+}
+
+.games-title2 {
+    font-size: 1.5rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    font-family: "MontHeavy";
+}
+
+.description2 {
+    font-size: 0.8rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    font-family: "MontLight";
+    margin-bottom: 50px;
+}
+
+.cards {
+	display: flex;
+    flex-direction: column; /* Karten untereinander */
+    align-items: center; /* Zentriert die Inhalte */
+    margin-top: 20px;
+    gap: 1rem;
+	&:hover {
+		.card {
+			background: radial-gradient(
+				100rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.4),
+				transparent 15%
+			);
+		}
+	}
+	.card {
+        width: 20rem;
+        height: 10rem;
+		background: radial-gradient(
+			150rem circle at 0 0,
+			rgba(#00f7ff, 0),
+			transparent 0%
+		);
+		border-radius: 0.5rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		transition: all 0.15s;
+		&:hover {
+			transform: scale(0.97);
+			&::before {
+				opacity: 1;
+			}
+		}
+		&::before {
+			content: "";
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 12px;
+			background: radial-gradient(
+				60rem circle at var(--xPos) var(--yPos),
+				rgba(#00f7ff, 0.1),
+				transparent 35%
+			);
+			opacity: 0;
+			transition: all 0.15s ease-in-out;
+		}
+		.card-content {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.08);
+			border-radius: 12px;
+			transition: all 0.25s;
+			height: calc(100% - 0.1rem);
+			width: calc(100% - 0.1rem);
+
+            display: flex;
+            align-items: center; /* Zentriert vertikal */
+            justify-content: center; /* Zentriert horizontal */
+            flex-direction: column; /* Stapelt Inhalt vertikal */
+            text-align: center; /* Falls Text vorhanden ist */
+		}
+	}
+}
+
+.logo3 {
+    width: 40px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.logo2 {
+    width: 45px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.games-title3 {
+    font-size: 1rem;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 0px;
+    font-family: "MontHeavy";
+}
+
+.description3 {
+    font-size: 0.8rem;
+    opacity: 0.6; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: "MontLight";
+}
+
+.games-title4 {
+    font-size: 1.2rem;
+    margin-bottom: 0px;
+    max-width: 90%;
+    margin: auto;
+    margin-top: 0px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: "MontHeavy";
+}
+
+.description4 {
+    font-size: 0.8rem;
+    opacity: 0.7; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 20px;
+    font-family: "MontLight";
+}
+
+.description5 {
+    font-size: 1rem;
+    opacity: 1; /* Leichter Transparenzeffekt */
+    max-width: 90%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 20px;
+    font-family: "MontLight";
+}
+
+.logo7 {
+    width: 80px; /* Größe anpassen */
+    height: auto;
+    margin-bottom: 10px;
+    filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
+    mix-blend-mode: screen;
+}
+
+.footer {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    font-family: "MontLight";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    opacity: 0; /* Unsichtbar standardmäßig */
+    transform: translateY(100%); /* Außerhalb des Bildschirms */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.description7 {
+    font-size: 0.7rem;
+    opacity: 1; /* Leichter Transparenzeffekt */
+    margin: 0 auto; /* Zentriert den Text */
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-family: "MontLight";
+}
+
+/* Neuer runder Button */
+.scroll-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Icon im Button */
+.arrow-icon {
+    width: 14px;
+    height: 10px;
+    opacity: 1;
+    transition: 0.3s;
+}
+
+/* Hover-Effekt für das Icon */
+.scroll-button:hover .arrow-icon {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+
+.scroll-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.description8 {
+    font-size: 0.8rem;
+    opacity: 0.7; /* Leichter Transparenzeffekt */
+    max-width: 80%;
+    margin: auto; /* Zentriert den Text */
+    margin-top: 20px;
+    font-family: "MontLight";
+}
+
+}
