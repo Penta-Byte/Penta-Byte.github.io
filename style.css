@@ -851,7 +851,7 @@ img {
 }
 
 .logo5 {
-    width: 150px;
+    width: 50px;
     position: relative;
     display: inline-block;
     overflow: hidden;
@@ -887,7 +887,7 @@ img {
 
 .card2 {
     width: 20rem;
-    height: 7rem;
+    height: 8rem;
     background: radial-gradient(
         150rem circle at 0 0,
         rgba(#00f7ff, 0),
