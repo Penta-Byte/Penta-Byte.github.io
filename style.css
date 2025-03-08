@@ -688,7 +688,7 @@ img {
     font-family: "MontLight";
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
     .theme-toggle {
     position: fixed;
     top: 20px;
