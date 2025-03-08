@@ -749,8 +749,8 @@ img {
     justify-self: center;
     margin-top: 80px;
     border-radius: 12px;
-    padding-left: 40%;
-    padding-right: 40%;
+    padding-left: 20%;
+    padding-right: 20%;
     padding-top: 4px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
@@ -782,7 +782,7 @@ img {
 
 /* Status-Titel */
 .status-item h3 {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     font-family: "MontLight";
     margin-bottom: 5px;
     color: rgba(255, 255, 255, 0.8);
@@ -851,7 +851,7 @@ img {
 }
 
 .logo5 {
-    width: 50px;
+    width: 150px;
     position: relative;
     display: inline-block;
     overflow: hidden;
@@ -887,7 +887,7 @@ img {
 
 .card2 {
     width: 20rem;
-    height: 8rem;
+    height: 6rem;
     background: radial-gradient(
         150rem circle at 0 0,
         rgba(#00f7ff, 0),
@@ -939,7 +939,7 @@ img {
 }
 
 .games-title6 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 0px;
     margin-top: 0px;
     font-weight: bold;
@@ -967,7 +967,7 @@ img {
 }
 
 .games-title2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-bottom: 0px;
     margin-top: 0px;
     font-weight: bold;
@@ -975,7 +975,7 @@ img {
 }
 
 .description2 {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     opacity: 0.6; /* Leichter Transparenzeffekt */
     margin: 0 auto; /* Zentriert den Text */
     font-family: "MontLight";
@@ -999,7 +999,7 @@ img {
 	}
 	.card {
         width: 20rem;
-        height: 10rem;
+        height: 7rem;
 		background: radial-gradient(
 			150rem circle at 0 0,
 			rgba(#00f7ff, 0),
@@ -1051,7 +1051,7 @@ img {
 }
 
 .logo3 {
-    width: 40px; /* Größe anpassen */
+    width: 20px; /* Größe anpassen */
     height: auto;
     margin-bottom: 10px;
     filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
@@ -1059,7 +1059,7 @@ img {
 }
 
 .logo2 {
-    width: 45px; /* Größe anpassen */
+    width: 25px; /* Größe anpassen */
     height: auto;
     margin-bottom: 10px;
     filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
@@ -1067,7 +1067,7 @@ img {
 }
 
 .games-title3 {
-    font-size: 1rem;
+    font-size: 0.9rem;
     margin-bottom: 0px;
     margin-top: 0px;
     font-weight: bold;
@@ -1086,7 +1086,7 @@ img {
 }
 
 .games-title4 {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin-bottom: 0px;
     max-width: 90%;
     margin: auto;
@@ -1106,7 +1106,7 @@ img {
 }
 
 .description5 {
-    font-size: 1rem;
+    font-size: 0.8rem;
     opacity: 1; /* Leichter Transparenzeffekt */
     max-width: 90%;
     margin: auto; /* Zentriert den Text */
@@ -1115,7 +1115,7 @@ img {
 }
 
 .logo7 {
-    width: 80px; /* Größe anpassen */
+    width: 60px; /* Größe anpassen */
     height: auto;
     margin-bottom: 10px;
     filter: invert(1) sepia(1) saturate(1000%) hue-rotate(180deg);
@@ -1128,7 +1128,7 @@ img {
     box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     font-size: 1rem;
     font-family: "MontLight";
     position: fixed;
@@ -1187,7 +1187,7 @@ img {
 }
 
 .description8 {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     opacity: 0.7; /* Leichter Transparenzeffekt */
     max-width: 80%;
     margin: auto; /* Zentriert den Text */
