@@ -120,54 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     checkBlobColorManually(); // Direkt beim Laden prüfen
 });
-document.addEventListener("DOMContentLoaded", () => {
-    // Verhindert Rechtsklick auf der gesamten Webseite
-    document.addEventListener("contextmenu", (event) => {
-        event.preventDefault();
-    });
 
-    // Verhindert Drag & Drop von Bildern oder anderen Elementen
-    document.addEventListener("dragstart", (event) => {
-        event.preventDefault();
-    });
-
-    // Verhindert STRG + A (Alles markieren)
-    document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && (event.key === "a" || event.key === "A")) {
-            event.preventDefault();
-        }
-    });
-
-    // Verhindert STRG + U (Seitenquelltext anzeigen)
-    document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && (event.key === "u" || event.key === "U")) {
-            event.preventDefault();
-        }
-    });
-
-    // Verhindert STRG + C (Kopieren)
-    document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && (event.key === "c" || event.key === "C")) {
-            event.preventDefault();
-        }
-    });
-
-    // Verhindert STRG + S (Speichern unter)
-    document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && (event.key === "s" || event.key === "S")) {
-            event.preventDefault();
-        }
-    });
-
-    // Verhindert STRG + P (Drucken)
-    document.addEventListener("keydown", (event) => {
-        if (event.ctrlKey && (event.key === "p" || event.key === "P")) {
-            event.preventDefault();
-        }
-    });
-
-    console.log("🔒 Schutz aktiviert: Kein Kopieren, Markieren oder Rechtsklick möglich.");
-});
 document.addEventListener("DOMContentLoaded", function () {
     const dotContainers = document.querySelectorAll(".pagination-dots, .pagination-dots-2");
 
