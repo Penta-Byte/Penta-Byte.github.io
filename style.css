@@ -885,6 +885,28 @@ img {
   .description8 {
     margin-bottom: 180px;
   }
+
+  .pagination-dots,
+  .pagination-dots-2 {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .dot,
+  .dot-2 {
+    width: 10px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: background 0.3s;
+  }
+
+  .dot.active,
+  .dot-2.active {
+    background: white;
+  }
 }
 
 /* --- Sehr kleine Screens: bis ~480px --- */
