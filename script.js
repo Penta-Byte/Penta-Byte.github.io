@@ -168,5 +168,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("🔒 Schutz aktiviert: Kein Kopieren, Markieren oder Rechtsklick möglich.");
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const dotContainers = document.querySelectorAll(".pagination-dots, .pagination-dots-2");
+
+    dotContainers.forEach((container) => {
+        for (let i = 0; i < 3; i++) {  // Adjust number of dots if needed
+            let dot = document.createElement("div");
+            dot.classList.add("dot");
+            if (i === 0) dot.classList.add("active"); // Mark first dot as active
+            container.appendChild(dot);
+        }
+    });
+});
 
 

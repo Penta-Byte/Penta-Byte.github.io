@@ -263,6 +263,7 @@ img {
   font-size: 1.1rem;
   font-family: "MontLight";
   margin-bottom: 5px;
+  white-space: nowrap;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -749,9 +750,9 @@ img {
   }
 
   .logo{
-    max-width: 30%;
+    max-width: 20%;
     height: auto;
-    margin-top: 80px;
+    margin-top: 120px;
   }
 
   .logo5{
@@ -781,6 +782,7 @@ img {
     font-size: 0.8rem;
     font-family: "MontLight";
     margin-bottom: 5px;
+    white-space: nowrap;
     color: rgba(255, 255, 255, 0.8);
   }
   
@@ -824,8 +826,10 @@ img {
   .theme-toggle {
     top: 20px;
     right: 20px;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
+    visibility: hidden;
+
   }
   .snackbar {
     top: 70px;
@@ -858,8 +862,8 @@ img {
   /* Game-Status-Box anpassen */
   .game-status-box {
     margin-top: 40px;
-    padding-left: 20px;
-    padding-right: 20px;
+    max-width: 50%;
+    justify-items: center;
   }
   .game-status-content {
     display: flex;
@@ -867,6 +871,7 @@ img {
   }
   .divider {
     display: flex; /* Bei schmalen Bildschirmen ausblenden oder alternativ horizontal umsetzen */
+    visibility: hidden;
   }
 
   /* Footer: ggf. etwas kleinere Schrift */
@@ -892,6 +897,8 @@ img {
     justify-content: center;
     gap: 8px;
     margin-top: 10px;
+    visibility: hidden;
+
   }
 
   .dot,
@@ -901,16 +908,39 @@ img {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     transition: background 0.3s;
+    visibility: hidden;
+
   }
 
   .dot.active,
   .dot-2.active {
     background: white;
+    visibility: hidden;
+
   }
 }
 
 /* --- Sehr kleine Screens: bis ~480px --- */
 @media (max-width: 480px) {
+
+      /* Status-Titel */
+  .status-item h3 {
+    font-size: 0.8rem;
+    font-family: "MontLight";
+    margin-bottom: 5px;
+    white-space: nowrap;
+    color: rgba(255, 255, 255, 0.8);
+  }
+    .divider {
+        display: flex; /* Bei schmalen Bildschirmen ausblenden oder alternativ horizontal umsetzen */
+        visibility: hidden;
+      }
+  /* Game-Status-Box anpassen */
+  .game-status-box {
+    margin-top: 40px;
+    max-width: 50%;
+    justify-items: center;
+  }
   /* Header noch etwas kleiner */
   .header {
     font-size: 2rem;
@@ -934,8 +964,13 @@ img {
     max-width: max-content;
   }
 
+  .logo{
+    max-width: 30%;
+    height: auto;
+    margin-top: 80px;
+  }
+
   /* Logo noch ein wenig kleiner */
-  .logo,
   .logo2,
   .logo3,
   .logo4,
@@ -956,8 +991,9 @@ img {
   }
 
   .theme-toggle {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
+    visibility: hidden;
   }
   .snackbar {
     width: 150px;
